@@ -1,6 +1,6 @@
 <?php
 // 現在の相対パスを取得
-$setting = json_decode(file_get_contents("../config/setting.json"), 1);
+$setting = json_decode(file_get_contents(dirname(__FILE__),dirname(__FILE__)."/../config/setting.json"), 1);
 $pathTarget = $setting["output"];
 $pathGetTarget = $setting["target"]["dir"];
 $expire = $setting["expire"];
