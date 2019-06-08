@@ -40,7 +40,7 @@ while( $checkDirs ) {
 						getFile($pathExplodeDir, $excludes, $pathTarget, $pathGetTarget);
 					}else{
 						$filemtime = date("Y/m/d H:i:s", filemtime($pathGetDir));
-						if(strtotime($expire, $filemtime) < strtotime("now")) {
+						if(strtotime($expire, strtotime($filemtime)) < strtotime("now")) {
 							unlink($pathGetDir);
 						}
 					}
