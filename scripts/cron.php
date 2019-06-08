@@ -1,6 +1,7 @@
+#/usr/bin/php
 <?php
 // 現在の相対パスを取得
-$setting = json_decode(file_get_contents(dirname(__FILE__),dirname(__FILE__)."/../config/setting.json"), 1);
+$setting = json_decode(file_get_contents(dirname(__FILE__)."/../config/setting.json"), 1);
 $pathTarget = $setting["output"];
 $pathGetTarget = $setting["target"]["dir"];
 $expire = $setting["expire"];
@@ -39,7 +40,7 @@ while( $checkDirs ) {
 						getFile($pathExplodeDir, $excludes, $pathTarget, $pathGetTarget);
 					}else{
 						$filemtime = date("Y/m/d H:i:s", filemtime($pathGetDir));
-						if(strtotime($expire, $filemtime) < time()) {
+						if(strtotime($expire, $filemtime) < strtotime("now")) {
 							unlink($pathGetDir);
 						}
 					}
